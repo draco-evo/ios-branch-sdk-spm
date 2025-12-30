@@ -2,13 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<!-- 1. 修改：強制關閉追蹤 -->
 	<key>NSPrivacyTracking</key>
-	<true/>
+	<false/>
+	
+	<!-- 2. 修改：清空追蹤網域 -->
 	<key>NSPrivacyTrackingDomains</key>
-	<array>
-		<string>api-safetrack.branch.io</string>
-		<string>api-safetrack-eu.branch.io</string>
-	</array>
+	<array/>
+	
 	<key>NSPrivacyCollectedDataTypes</key>
 	<array>
 		<dict>
@@ -16,12 +17,13 @@
 			<string>NSPrivacyCollectedDataTypeDeviceID</string>
 			<key>NSPrivacyCollectedDataTypeLinked</key>
 			<true/>
+			<!-- 3. 修改：Device ID 不用於追蹤 -->
 			<key>NSPrivacyCollectedDataTypeTracking</key>
-			<true/>
+			<false/>
 			<key>NSPrivacyCollectedDataTypePurposes</key>
 			<array>
-				<string>NSPrivacyCollectedDataTypePurposeThirdPartyAdvertising</string>
-				<string>NSPrivacyCollectedDataTypePurposeDeveloperAdvertising</string>
+				<!-- 4. 修改：用途改為 App 功能 (Deep Link) 與分析 -->
+				<string>NSPrivacyCollectedDataTypePurposeAppFunctionality</string>
 				<string>NSPrivacyCollectedDataTypePurposeAnalytics</string>
 			</array>
 		</dict>
@@ -50,6 +52,8 @@
 			</array>
 		</dict>
 	</array>
+	
+	<!-- 5. 保留：Branch 需要的 API 宣告 (無需更動) -->
 	<key>NSPrivacyAccessedAPITypes</key>
 	<array>
 		<dict>
